@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  padding: 20px;
+  background: lightblue;
+}
+
+.header__banner-content {
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+
+.header__text {
+  width: 50%;
+  justify-content: center;
+  right: 0;
+}
+
+.header__social-links {
+  width: 50%;
+  right: 0;
+} 
+
+.header__github-svg {
+  float: right;
+  stroke: black;
+}
