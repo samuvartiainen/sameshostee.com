@@ -1,29 +1,42 @@
 .header {
-  display: flex;
-  padding: 20px;
   background: lightblue;
 }
 
-.header__banner-content {
+.header__navbar-content {
+  padding: 20px;
   top: 0;
   width: 100%;
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 50px;
 }
 
-.header__text {
+.header__text-container {
+  display: flex;
   width: 50%;
-  justify-content: center;
-  right: 0;
 }
 
 .header__social-links {
+  padding-right: 40px;
   width: 50%;
-  right: 0;
-} 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header__github-link {
+  margin: 5px;
+}
+
+.header__linkedin-link {
+  margin: 5px;
+}
 
 .header__github-svg {
-  float: right;
   stroke: black;
+}
+
+.header__banner-content {
+  height: 500px;
+  background: #007aff;
 }
