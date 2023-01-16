@@ -1,0 +1,8 @@
+.projects {
+  display: flex;
+  background: lightblue;
+}
+
+.projects__text-container {
+  padding: 20px;
+}
