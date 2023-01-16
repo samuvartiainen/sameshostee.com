@@ -1,8 +1,14 @@
 .projects {
-  display: flex;
+  height: 500px;
   background: lightblue;
+  margin-bottom: 100px;
 }
 
 .projects__text-container {
+  display: flex;
   padding: 20px;
+}
+
+.projects__example {
+  height: 400px;
 }

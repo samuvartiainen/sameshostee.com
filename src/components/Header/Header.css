@@ -5,7 +5,6 @@
 .header__navbar-content {
   padding: 20px;
   top: 0;
-  width: 100%;
   display: flex;
   align-items: center;
   height: 50px;
@@ -17,7 +16,6 @@
 }
 
 .header__social-links {
-  padding-right: 40px;
   width: 50%;
   display: flex;
   justify-content: flex-end;
@@ -29,7 +27,7 @@
 }
 
 .header__linkedin-link {
-  margin: 5px;
+  margin: 5px 0px 5px 5px;
 }
 
 .header__github-svg {

@@ -36,9 +36,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="header__banner-content">
-        <img
-          src="logo512.png"
-        />
+
       </div>
     </header>
   )
