@@ -1,0 +1,11 @@
+.button {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 1.0rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #00e0ca;
+  color: white;
+  font-weight: bold;
+}

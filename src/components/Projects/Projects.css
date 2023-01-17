@@ -1,0 +1,30 @@
+.projects {
+  background: #374BAA;
+}
+
+.projects__text-container {
+  display: flex;
+  padding: 20px;
+}
+
+.projects__text {
+  color: white;
+}
+
+.projects__item {
+  height: 400px;
+  display: flex;
+  flex-flow: column;
+}
+
+.projects__button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects__open-button {
+  justify-content: center;
+  width: 100px;
+  transition: 200ms;
+}
