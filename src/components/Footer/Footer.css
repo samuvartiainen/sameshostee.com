@@ -1,4 +1,24 @@
 .footer {
-  height: 100px;
-  background: grey;
+  height: 130px;
+  width: 100%;
+  background: #00e0ca;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer__github-link {
+  height: 50px;
+  display: inline-block;
+  width: 50px;
+}
+
+.footer__linkedin-link {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+.footer__github-svg {
+  stroke: black;
 }
