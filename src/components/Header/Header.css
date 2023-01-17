@@ -1,5 +1,5 @@
 .header {
-  background: lightblue;
+  background: #374BAA;
 }
 
 .header__navbar-content {
@@ -15,6 +15,10 @@
   width: 50%;
 }
 
+.header__site-name {
+  color: white;
+}
+
 .header__social-links {
   width: 50%;
   display: flex;
@@ -22,19 +26,7 @@
   align-items: center;
 }
 
-.header__github-link {
-  margin: 5px;
-}
-
-.header__linkedin-link {
-  margin: 5px 0px 5px 5px;
-}
-
-.header__github-svg {
-  stroke: black;
-}
-
 .header__banner-content {
-  height: 500px;
-  background: #007aff;
+  height: 1000px;
+  background: #00e0ca;
 }

@@ -1,12 +1,12 @@
-import { Button, Paper } from "@mui/material"
+import { forwardRef } from "react"
 import Carousel from "react-material-ui-carousel"
-import { Link } from "../Link"
+import { Button } from "../Button"
 import "./Projects.css"
-export const Projects = ({
-  class: cls,
-  href,
-  ...props
-}) => {
+
+export const Projects = forwardRef((
+  props,
+  ref
+) => {
 
   const items = [
     {
@@ -16,23 +16,34 @@ export const Projects = ({
     {
         name: "Thesis",
         description: "Hello World!"
+    },
+    {
+      name: "3rd",
+      description: "aaa"
+    },
+    {
+        name: "4th",
+        description: "bbbb"
     }
 ]
 
 
   return (
-    <div className="projects">
+    <div className="projects" ref={ref}>
       <div className="projects__text-container">
-        <h1>My projects</h1>
+        <h1 className="projects__text">
+          My projects
+        </h1>
       </div>
       <Carousel
       indicatorContainerProps={{
         style: {
-            marginTop: '50px', // 5
-            background: "lightblue",
+            marginTop: '20px',
+            marginBottom: '20px',
+            background: "#374BAA",
         }
       }}
-      
+      navButtonsAlwaysVisible={true}
       autoPlay={false} interval={10000}>
       {
         items.map( (item, i) => <Item key={i} item={item} /> )
@@ -40,20 +51,24 @@ export const Projects = ({
       </Carousel>
     </div>
   )
-}
+})
 
 function Item(props)
 {
     return (
-        <Paper className="projects__example">
-          <h2>{props.item.name}</h2>
-          <p>{props.item.description}</p>
+      <div className="projects__item">
+        <h2>{props.item.name}</h2>
+        <div>
           <img
             src="logo192.png"
           />
-          <Button className="CheckButton">
-              Open
+        </div>
+        <p>{props.item.description}</p>
+        <div className="projects__button-container">
+          <Button className="projects__open-button">
+            Open
           </Button>
-        </Paper>
+        </div>
+      </div>
     )
 }
