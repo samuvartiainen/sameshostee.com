@@ -9,6 +9,7 @@
 
 .footer__github-link {
   height: 50px;
+  margin-top: 20px;
   display: inline-block;
   width: 50px;
 }
