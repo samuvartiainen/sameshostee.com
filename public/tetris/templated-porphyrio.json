@@ -1,0 +1,13 @@
+{
+"companyName": "Samuava",
+"productName": "Hahatetris",
+"dataUrl": "templated-porphyrio.data.unityweb",
+"asmCodeUrl": "templated-porphyrio.asm.code.unityweb",
+"asmMemoryUrl": "templated-porphyrio.asm.memory.unityweb",
+"asmFrameworkUrl": "templated-porphyrio.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
