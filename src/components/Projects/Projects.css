@@ -1,5 +1,9 @@
 .projects {
   background: #374BAA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
 }
 
 .projects__text-container {
@@ -11,24 +15,6 @@
   color: white;
 }
 
-.projects__item {
-  height: 400px;
-  display: flex;
-  flex-flow: column;
-}
-
-.projects__button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.projects__open-link {
-  text-decoration: none;
-}
-
-.projects__open-button {
-  justify-content: center;
-  width: 100px;
-  transition: 200ms;
+.projects__carousel {
+  width: 80%;
 }

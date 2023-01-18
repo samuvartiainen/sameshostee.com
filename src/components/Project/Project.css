@@ -1,0 +1,29 @@
+.project {
+  display: flex;
+  flex-flow: column;
+}
+
+.project__item {
+  height: 300px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.project__button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.project__open-link {
+  text-decoration: none;
+}
+
+.project__open-button {
+  justify-content: center;
+  width: 100px;
+  transition: 200ms;
+}

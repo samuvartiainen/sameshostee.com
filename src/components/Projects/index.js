@@ -2,6 +2,7 @@ import { forwardRef } from "react"
 import Carousel from "react-material-ui-carousel"
 import { Button } from "../Button"
 import { Link } from "../Link"
+import { Project } from "../Project"
 import "./Projects.css"
 
 export const Projects = forwardRef((
@@ -15,6 +16,7 @@ export const Projects = forwardRef((
       description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
       link: "https://sameshostee.com/Junanhakusivu.html",
       target: null,
+      imageSrc: './train.jpg'
     },
     {
       name: "Thesis",
@@ -23,10 +25,11 @@ export const Projects = forwardRef((
       target: "_blank"
     },
     {
-      name: "3rd",
-      description: "aaa",
+      name: "Tetris",
+      description: "Game I made on Unity",
       link: null,
       target: null,
+      imageSrc: './tetris.jpg'
     },
     {
       name: "4th",
@@ -36,7 +39,6 @@ export const Projects = forwardRef((
     }
 ]
 
-
   return (
     <div className="projects" ref={ref}>
       <div className="projects__text-container">
@@ -45,48 +47,36 @@ export const Projects = forwardRef((
         </h1>
       </div>
       <Carousel
-      indicatorContainerProps={{
-        style: {
-          marginTop: '20px',
-          marginBottom: '20px',
-          background: "#374BAA",
-        }
-      }}
-      navButtonsAlwaysVisible={true}
-      autoPlay={false} interval={10000}>
-      {
-        items.map( (item, i, link, target) => <Item key={i} item={item} link={link} target={target}/> )
-      }
+        className="projects__carousel"
+        indicatorContainerProps={{
+          style: {
+            marginTop: '80px',
+            marginBottom: '20px',
+            background: "#374BAA",
+            display: "flex",
+            justifyContent: "center",
+          }
+        }}
+        navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
+          style: {
+            backgroundColor: '#374BAA',
+            borderRadius: "0.5rem"
+          }
+        }} 
+        navButtonsWrapperProps={{   // Move the buttons to the bottom. Unsetting top here to override default style.
+          style: {
+            height: "300px",
+          }
+        }} 
+        navButtonsAlwaysVisible={true}
+        autoPlay={false} interval={10000}>
+        {items.map((item, i) => (
+          <Project
+            key={i} 
+            item={item}
+          />
+        ))}
       </Carousel>
     </div>
   )
 })
-
-function Item(props)
-{
-    return (
-      <div className="projects__item">
-        <h2>{props.item.name}</h2>
-        <div>
-          <img
-            src="logo192.png"
-          />
-        </div>
-        <p>{props.item.description}</p>
-        <div className="projects__button-container">
-          {props.item.link && (
-            <Link 
-              className="projects__open-link"
-              href={props.item.link}
-              target={props.item.target && props.item.target}
-            >
-              <Button className="projects__open-button">
-                Open
-              </Button>
-            </Link>
-            )
-          }
-        </div>
-      </div>
-    )
-}
