@@ -1,6 +1,7 @@
 import { forwardRef } from "react"
 import Carousel from "react-material-ui-carousel"
 import { Button } from "../Button"
+import { Link } from "../Link"
 import "./Projects.css"
 
 export const Projects = forwardRef((
@@ -10,20 +11,28 @@ export const Projects = forwardRef((
 
   const items = [
     {
-        name: "Trains search",
-        description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic."
+      name: "Trains search",
+      description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
+      link: "https://sameshostee.com/Junanhakusivu.html",
+      target: null,
     },
     {
-        name: "Thesis",
-        description: "Hello World!"
+      name: "Thesis",
+      description: "Hello World!",
+      link: "https://urn.fi/URN:NBN:fi:amk-2020091620484",
+      target: "_blank"
     },
     {
       name: "3rd",
-      description: "aaa"
+      description: "aaa",
+      link: null,
+      target: null,
     },
     {
-        name: "4th",
-        description: "bbbb"
+      name: "4th",
+      description: "bbbb",
+      link: null,
+      target: null,
     }
 ]
 
@@ -38,15 +47,15 @@ export const Projects = forwardRef((
       <Carousel
       indicatorContainerProps={{
         style: {
-            marginTop: '20px',
-            marginBottom: '20px',
-            background: "#374BAA",
+          marginTop: '20px',
+          marginBottom: '20px',
+          background: "#374BAA",
         }
       }}
       navButtonsAlwaysVisible={true}
       autoPlay={false} interval={10000}>
       {
-        items.map( (item, i) => <Item key={i} item={item} /> )
+        items.map( (item, i, link, target) => <Item key={i} item={item} link={link} target={target}/> )
       }
       </Carousel>
     </div>
@@ -65,9 +74,18 @@ function Item(props)
         </div>
         <p>{props.item.description}</p>
         <div className="projects__button-container">
-          <Button className="projects__open-button">
-            Open
-          </Button>
+          {props.item.link && (
+            <Link 
+              className="projects__open-link"
+              href={props.item.link}
+              target={props.item.target && props.item.target}
+            >
+              <Button className="projects__open-button">
+                Open
+              </Button>
+            </Link>
+            )
+          }
         </div>
       </div>
     )

@@ -23,6 +23,10 @@
   align-items: center;
 }
 
+.projects__open-link {
+  text-decoration: none;
+}
+
 .projects__open-button {
   justify-content: center;
   width: 100px;
