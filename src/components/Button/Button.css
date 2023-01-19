@@ -12,4 +12,6 @@
 
 .button:hover {
   cursor: pointer;
+  text-shadow: 0em 0em 1em #00e0ca;
+  box-shadow: 0 0 1em #00e0ca;
 }

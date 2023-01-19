@@ -10,14 +10,24 @@
 .footer__github-link {
   height: 50px;
   margin-top: 20px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
+}
+
+.footer__github-link:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 .footer__linkedin-link {
   display: inline-block;
   height: 50px;
   width: 50px;
+}
+
+.footer__linkedin-link:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 .footer__github-svg {
