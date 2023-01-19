@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+background-color: #66cc99;
+}
+#dropContainerCSV{
+float: left; margin-right: 50px; box-shadow: 5px 10px #006600;
+}
+#dropContainerXLSX{ 
+float: left; box-shadow: 5px 10px #000000;
+}
+.dropCSV{ 
+text-align: center; color: forestgreen; width: 300px; height: 140px; background-color: lightgreen; border: 3px solid forestgreen;
+}
+.dropXLSX{
+text-align: center; width: 300px; height: 140px; background-color: darkgreen; border: 3px solid black;
+}
+</style>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.1/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.6.2/papaparse.js"></script>
+</head>
+
+<body>
+<span id="dropContainerCSV">
+<div class="dropCSV">
+<h3>CSV-tiedosto XLSX:ksi</h3> 
+Pudota CSV-tiedosto tänne
+<p> Tai <input type="file"  id="CSVfileInput" /></p>
+</div>
+</span>
+<span id="dropContainerXLSX">
+<div class="dropXLSX">
+<h3>XLSX-tiedosto CSV:ksi</h3>
+Pudota XLSX-tiedosto tänne
+<p>Tai <input type="file" id="XLSXfileInput" /></p>
+</div>
+</span>
+<script>
+
+// apufunktioita, voidaan tarkastaa onko käyty funktiossa
+initCSV.called = false;
+initXLSX.called = false;
+function initCSV() {
+    initCSV.called = true;
+}
+function initXLSX() {
+    initXLSX.called = true;
+}
+
+// Tiedoston pudottamista varten dropContainerit
+dropContainerCSV.ondragover = dropContainerCSV.ondragenter = function(evt) {
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy';
+};
+
+dropContainerCSV.ondrop = function(evt) {
+
+  CSVfileInput.files = evt.dataTransfer.files; // Selaimista esim. Firefox ei triggaa tässä eventtiä automaattisesti, Chrome taas triggaa
+  if(initCSV.called == false){ //  CSVfileReader-funktiossa käynnin tarkistus
+  $('#CSVfileInput').change(); // manuaalisesti eventin triggaus
+}
+
+evt.preventDefault();
+initCSV.called = false; // uudestaan false, jotta voi lisätä tiedoston uusiksi
+};
+dropContainerXLSX.ondragover = dropContainerXLSX.ondragenter = function(evt) {
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy';
+};
+
+dropContainerXLSX.ondrop = function(evt) {
+
+  XLSXfileInput.files = evt.dataTransfer.files; // Selaimista esim. Firefox ei triggaa tässä eventtiä automaattisesti, Chrome taas triggaa
+  if(initXLSX.called == false){ //  XLSXfileReader-funktiossa käynnin tarkistus
+  $('#XLSXfileInput').change(); // manuaalisesti eventin triggaus
+
+}
+evt.preventDefault();
+initXLSX.called = false;
+};
+
+// Pudotetun CSV-tiedoston käsittely 
+function CSVfileReader(oEvent2) {
+initCSV();
+var data;
+var file = oEvent2.target.files[0];
+var eFileName2 = file.name;
+
+// Papa.parse kirjaston käyttö CSV --> JSON 
+    Papa.parse(file, {
+       
+    header: true,
+    download: true,
+    dynamicTyping: false,
+    complete: function(results) {
+    data = results;
+    // console.log(results.data);
+      
+    makeXLSXFile(results.data, eFileName2); 
+    }
+
+   });
+ }
+
+// tehdään JSON datasta XLSX-tiedosto
+function makeXLSXFile(data, eFileName2) {
+
+// worksheet
+var ws = XLSX.utils.json_to_sheet(data);
+// workbook
+var wb = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
+
+var newFileName2 = getFileName2(eFileName2);
+// luodaan XLSX-tiedosto
+XLSX.writeFile(wb, newFileName2+".xlsx");
+}
+
+// Pudotetun XLSX-tiedoston käsittely 
+function XLSXfileReader(oEvent) {
+    initXLSX();
+    var oFile = oEvent.target.files[0];
+    var eFileName1 = oFile.name;
+    var reader = new FileReader();
+     
+    reader.onload = function (e) {
+    var array = new Array();
+    var arrayBuffer = this.result;
+    var data = new Uint8Array(arrayBuffer);
+    binaryString = String.fromCharCode.apply(null, array);
+
+    var arr = new Array();
+  for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+  var bstr = arr.join("");
+
+makeCSVfile(bstr, eFileName1); 
+};
+
+reader.readAsArrayBuffer(oFile);    
+}
+
+// tehdään binäärisenä olevasta datasta CSV-tiedosto
+function makeCSVfile(bstr, eFileName1){
+    
+// Sheetjs /XLSX -kirjaston XLSX.read -funktio parsii XLSX-tiedoston workbookkiin
+var workbook = XLSX.read(bstr, {type:"binary"});
+
+// workbookin lehti
+var first_sheet_name = workbook.SheetNames[0];
+
+var worksheet = workbook.Sheets[first_sheet_name];
+
+// CSV-tiedostoon Papa.unparse -funktio tekee worksheet:istä pilkuilla ja rivinvaihdoilla erotellun taulukon eli CSV:n
+var blob = new Blob([Papa.unparse(XLSX.utils.sheet_to_json(worksheet,{raw:true}))]);
+
+var newFileName1 = getFileName1(eFileName1);
+
+// uusi tiedosto ladataan automaattisti
+if (window.navigator.msSaveOrOpenBlob) 
+  window.navigator.msSaveBlob(blob, newFileName1+".csv");
+else
+{
+  var a = window.document.createElement("a");
+  a.href = window.URL.createObjectURL(blob, {type: "text/plain"});
+  a.download = newFileName1+".csv";
+  document.body.appendChild(a);
+  a.click();  
+  document.body.removeChild(a);
+}
+}
+
+// Pudotetun tiedoston nimi uudelle tiedostolle
+function getFileName1(eFilename1) {
+nFilename1 = eFilename1.slice(0, -5); // .xlsx pääte pois
+return nFilename1;
+};
+
+function getFileName2(eFilename2) {
+nFilename2 = eFilename2.slice(0, -4); // .csv pääte pois
+return nFilename2;
+};
+
+// jQuery:llä CSVfileReader funktiota kutsutaan, jos CSVfileInput arvo vaihtuu eli jos tiedosto pudotetaan tai valitaan napista
+$('#CSVfileInput').change(function(oEvent1) { 
+
+    CSVfileReader(oEvent1);	
+});
+
+// jQuery:llä XLSXfileReader funktiota kutsutaan, jos XLSXfileInput arvo vaihtuu eli jos tiedosto pudotetaan tai valitaan napista
+$('#XLSXfileInput').change(function(oEvent2) {
+        
+    XLSXfileReader(oEvent2);
+});
+</script>
+</body>
+</html>

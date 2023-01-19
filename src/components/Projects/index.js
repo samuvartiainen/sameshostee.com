@@ -1,32 +1,61 @@
 import { forwardRef } from "react"
 import Carousel from "react-material-ui-carousel"
-import { Button } from "../Button"
+import { Project } from "../Project"
 import "./Projects.css"
 
 export const Projects = forwardRef((
   props,
-  ref
+  ref,
 ) => {
+  const { device } = props
+  let shownItems = device === 'mobile' ? 1 : device === 'tablet' ? 2 : 3
+  const projects = [
+    {
+      name: "Trains search",
+      description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
+      link: "https://sameshostee.com/Junanhakusivu.html",
+      target: null,
+      imageSrc: './train.jpg'
+    },
+    {
+      name: "Thesis",
+      description: "Sensor data project",
+      link: "https://urn.fi/URN:NBN:fi:amk-2020091620484",
+      imageSrc: './tetris.jpg',
+      target: "_blank"
+    },
+    {
+      name: "Tetris",
+      description: "Game I made in Unity",
+      link: "https://sameshostee.com/tetrisgame.html",
+      target: null,
+      imageSrc: './tetris.jpg'
+    },
+    {
+      name: "4th",
+      description: "test",
+      link: "https://sameshostee.com/tetrisgame.html",
+      target: null,
+      imageSrc: './tetris.jpg'
+    },{},{}
+  ]
 
-  const items = [
-    {
-        name: "Trains search",
-        description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic."
-    },
-    {
-        name: "Thesis",
-        description: "Hello World!"
-    },
-    {
-      name: "3rd",
-      description: "aaa"
-    },
-    {
-        name: "4th",
-        description: "bbbb"
+  const items = []
+  const sliderItems = projects.length > shownItems ? shownItems : projects.length
+  for (let i = 0; i < projects.length; i += sliderItems) {
+    if (i % sliderItems === 0) {
+      items.push(
+        <div key={i} className="projects__project-container">
+          {projects.slice(i, i + sliderItems).map((da, index) => {
+            return (<Project
+              key={index} 
+              item={da}
+            />)
+          })}
+        </div>
+      )
     }
-]
-
+  }
 
   return (
     <div className="projects" ref={ref}>
@@ -36,39 +65,35 @@ export const Projects = forwardRef((
         </h1>
       </div>
       <Carousel
-      indicatorContainerProps={{
-        style: {
-            marginTop: '20px',
+        className="projects__carousel"
+        indicatorContainerProps={{
+          style: {
+            marginTop: '80px',
             marginBottom: '20px',
             background: "#374BAA",
-        }
-      }}
-      navButtonsAlwaysVisible={true}
-      autoPlay={false} interval={10000}>
-      {
-        items.map( (item, i) => <Item key={i} item={item} /> )
-      }
+            display: "flex",
+            justifyContent: "center",
+          }
+        }}
+        navButtonsProps={{
+          style: {
+            backgroundColor: '#00e0ca',
+            borderRadius: "0.5rem",
+            marginLeft: "20px",
+            marginRight: "20px"
+          }
+        }} 
+        navButtonsWrapperProps={{
+          style: {
+            height: "300px",
+          }
+        }} 
+        navButtonsAlwaysVisible={true}
+        autoPlay={false}
+        interval={10000}
+      >
+        {items}
       </Carousel>
     </div>
   )
 })
-
-function Item(props)
-{
-    return (
-      <div className="projects__item">
-        <h2>{props.item.name}</h2>
-        <div>
-          <img
-            src="logo192.png"
-          />
-        </div>
-        <p>{props.item.description}</p>
-        <div className="projects__button-container">
-          <Button className="projects__open-button">
-            Open
-          </Button>
-        </div>
-      </div>
-    )
-}

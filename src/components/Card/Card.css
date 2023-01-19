@@ -1,0 +1,29 @@
+.card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 300px;
+  background: #374BAA;
+}
+
+.card--empty{
+  height: 0;
+}
+
+.card__background-wrapper {
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+}
+
+.card__background {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 300px;
+}
