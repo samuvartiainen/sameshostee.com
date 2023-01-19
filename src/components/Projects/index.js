@@ -77,17 +77,19 @@ export const Projects = forwardRef((
         }}
         navButtonsProps={{
           style: {
-            backgroundColor: '#00e0ca',
-            borderRadius: "0.5rem",
-            marginLeft: "20px",
-            marginRight: "20px"
+            backgroundColor: 'grey',
+            borderRadius: "1.5rem",
+            marginLeft: device === "mobile" ? "2px" : "20px",
+            marginRight: device === "mobile" ? "2px" : "20px",
           }
         }} 
         navButtonsWrapperProps={{
           style: {
             height: "300px",
+            overflow: "visible",
+            width: "10%"
           }
-        }} 
+        }}
         navButtonsAlwaysVisible={true}
         autoPlay={false}
         interval={10000}
