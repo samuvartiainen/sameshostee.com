@@ -13,7 +13,7 @@ export const Projects = forwardRef((
     {
       name: "Trains search",
       description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
-      link: "https://sameshostee.com/Junanhakusivu.html",
+      link: "https://sameshostee.com/junanhakusivu.html",
       target: null,
       imageSrc: './train.jpg'
     },
@@ -21,7 +21,7 @@ export const Projects = forwardRef((
       name: "Thesis",
       description: "Sensor data project",
       link: "https://urn.fi/URN:NBN:fi:amk-2020091620484",
-      imageSrc: './tetris.jpg',
+      imageSrc: './academia.png',
       target: "_blank"
     },
     {
@@ -32,11 +32,11 @@ export const Projects = forwardRef((
       imageSrc: './tetris.jpg'
     },
     {
-      name: "4th",
-      description: "test",
-      link: "https://sameshostee.com/tetrisgame.html",
+      name: "File converter",
+      description: "Csv <-> Xlsx converter",
+      link: "https://sameshostee.com/CsvToXlsxConverter.html",
       target: null,
-      imageSrc: './tetris.jpg'
+      imageSrc: './folder.png'
     },{},{}
   ]
 
@@ -68,11 +68,21 @@ export const Projects = forwardRef((
         className="projects__carousel"
         indicatorContainerProps={{
           style: {
-            marginTop: '80px',
+            marginTop: '10rem',
             marginBottom: '20px',
             background: "#374BAA",
             display: "flex",
             justifyContent: "center",
+          }
+        }}
+        indicatorIconButtonProps={{
+          style: {
+            color: 'grey'
+          }
+        }}
+        activeIndicatorIconButtonProps={{
+          style: {
+            color: '#00e0ca'
           }
         }}
         navButtonsProps={{
@@ -81,13 +91,15 @@ export const Projects = forwardRef((
             borderRadius: "1.5rem",
             marginLeft: device === "mobile" ? "2px" : "20px",
             marginRight: device === "mobile" ? "2px" : "20px",
+            marginTop: "10px"
           }
         }} 
         navButtonsWrapperProps={{
           style: {
             height: "300px",
             overflow: "visible",
-            width: "10%"
+            width: "15%",
+            marginTop: "10px"
           }
         }}
         navButtonsAlwaysVisible={true}

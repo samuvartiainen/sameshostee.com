@@ -5,9 +5,9 @@ export const Card = ({
   description,
   imageSrc,
 }) => {
-  const modifier = !imageSrc && '--empty'
+  const modifier = !imageSrc ? ' --empty' : ''
   return (
-    <div className={`card ${modifier}`}>
+    <div className={`card${modifier}`}>
       {/* <h2>{name}</h2> */}
       {imageSrc && 
         <div className="card__background-wrapper">
