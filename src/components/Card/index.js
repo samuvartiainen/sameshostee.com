@@ -5,15 +5,18 @@ export const Card = ({
   description,
   imageSrc,
 }) => {
+  const modifier = !imageSrc && '--empty'
   return (
-    <div className="card">
+    <div className={`card ${modifier}`}>
       {/* <h2>{name}</h2> */}
-      <div className="card__background-wrapper">
-        <img
-          className="card__background"
-          src={imageSrc}
-        />
-      </div>
+      {imageSrc && 
+        <div className="card__background-wrapper">
+          <img
+            className="card__background"
+            src={imageSrc}
+          />
+        </div>
+      }
       {/* <p>{description}</p> */}
     </div>
   )

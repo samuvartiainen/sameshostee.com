@@ -1,16 +1,15 @@
 import { forwardRef } from "react"
 import Carousel from "react-material-ui-carousel"
-import { Button } from "../Button"
-import { Link } from "../Link"
 import { Project } from "../Project"
 import "./Projects.css"
 
 export const Projects = forwardRef((
   props,
-  ref
+  ref,
 ) => {
-
-  const items = [
+  const { device } = props
+  let shownItems = device === 'mobile' ? 1 : device === 'tablet' ? 2 : 3
+  const projects = [
     {
       name: "Trains search",
       description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
@@ -20,24 +19,43 @@ export const Projects = forwardRef((
     },
     {
       name: "Thesis",
-      description: "Hello World!",
+      description: "Sensor data project",
       link: "https://urn.fi/URN:NBN:fi:amk-2020091620484",
+      imageSrc: './tetris.jpg',
       target: "_blank"
     },
     {
       name: "Tetris",
-      description: "Game I made on Unity",
-      link: null,
+      description: "Game I made in Unity",
+      link: "https://sameshostee.com/tetrisgame.html",
       target: null,
       imageSrc: './tetris.jpg'
     },
     {
       name: "4th",
-      description: "bbbb",
-      link: null,
+      description: "test",
+      link: "https://sameshostee.com/tetrisgame.html",
       target: null,
+      imageSrc: './tetris.jpg'
+    },{},{}
+  ]
+
+  const items = []
+  const sliderItems = projects.length > shownItems ? shownItems : projects.length
+  for (let i = 0; i < projects.length; i += sliderItems) {
+    if (i % sliderItems === 0) {
+      items.push(
+        <div key={i} className="projects__project-container">
+          {projects.slice(i, i + sliderItems).map((da, index) => {
+            return (<Project
+              key={index} 
+              item={da}
+            />)
+          })}
+        </div>
+      )
     }
-]
+  }
 
   return (
     <div className="projects" ref={ref}>
@@ -57,25 +75,24 @@ export const Projects = forwardRef((
             justifyContent: "center",
           }
         }}
-        navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
+        navButtonsProps={{
           style: {
-            backgroundColor: '#374BAA',
-            borderRadius: "0.5rem"
+            backgroundColor: '#00e0ca',
+            borderRadius: "0.5rem",
+            marginLeft: "20px",
+            marginRight: "20px"
           }
         }} 
-        navButtonsWrapperProps={{   // Move the buttons to the bottom. Unsetting top here to override default style.
+        navButtonsWrapperProps={{
           style: {
             height: "300px",
           }
         }} 
         navButtonsAlwaysVisible={true}
-        autoPlay={false} interval={10000}>
-        {items.map((item, i) => (
-          <Project
-            key={i} 
-            item={item}
-          />
-        ))}
+        autoPlay={false}
+        interval={10000}
+      >
+        {items}
       </Carousel>
     </div>
   )

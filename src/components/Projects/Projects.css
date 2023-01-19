@@ -6,6 +6,10 @@
   flex-flow: column;
 }
 
+.projects__project-container {
+  display: flex;
+}
+
 .projects__text-container {
   display: flex;
   padding: 20px;

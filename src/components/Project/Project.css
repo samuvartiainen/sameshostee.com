@@ -9,6 +9,8 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .project__button-container {
