@@ -9,15 +9,15 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .project__button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 2rem;
 }
 
 .project__open-link {
@@ -28,4 +28,38 @@
   justify-content: center;
   width: 100px;
   transition: 200ms;
+}
+
+.project__title-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.project__title-text {
+  color: white;
+}
+
+.project__description-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 0.5rem 0.5rem;
+  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.project__description-text {
+  font-size: 10px;
+  color: white;
 }

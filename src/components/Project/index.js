@@ -13,7 +13,22 @@ export const Project = ({
         name={name}
         description={description}
         imageSrc={imageSrc}
-      />
+      >
+        {name && (
+          <div className="project__title-container">
+            <h2 className="project__title-text">
+              {name}
+              </h2>
+          </div>)
+        }
+        {description && (
+          <div className="project__description-container">
+            <h2 className="project__description-text">
+              {description}
+            </h2>
+          </div>)
+        }
+      </Card>
       <div className="project__button-container">
         {link && (
           <Link
