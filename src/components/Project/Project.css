@@ -29,3 +29,37 @@
   width: 100px;
   transition: 200ms;
 }
+
+.project__title-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.project__title-text {
+  color: white;
+}
+
+.project__description-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 0.5rem 0.5rem;
+  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.project__description-text {
+  font-size: 10px;
+  color: white;
+}
