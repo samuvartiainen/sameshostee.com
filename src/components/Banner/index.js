@@ -1,40 +1,7 @@
 import { useEffect, useRef, useState } from "react"
+import { addWordPositionsToHobbies } from "../../utils/addPositions"
 import { Word } from "../Word"
 import "./Banner.css"
-
-const randomInteger = (min, max) => (
-  Math.floor(Math.random() * (max - min + 1) + min)
-)
-
-const addPositions = (counter, protection, minHeight, maxHeight, minWidth, maxWidth, hobbies) => {
-  const positions = []
-  while (positions.length < 9 && counter < protection) {
-    let overlapping = false
-    let position = {
-      top: randomInteger(minHeight, maxHeight),
-      left: randomInteger(minWidth, maxWidth)
-    }
-    for (let j = 0; j < positions.length; j++) {
-      const existing = positions[j]
-      const diffLeft = Math.abs(existing.left - position.left)
-      const diffTop = Math.abs(existing.top - position.top)
-      const notEnoughDiffLeft = diffLeft < 125
-      const notEnoughDiffTop = diffTop < 50
-      if (notEnoughDiffLeft && notEnoughDiffTop) {
-        overlapping = true
-        break
-      }
-    }
-    if (!overlapping) {
-      positions.push(position)
-      hobbies[positions.length-1].top = position.top
-      hobbies[positions.length-1].left = position.left
-    }
-    counter++
-  }
-
-  return hobbies
-}
 
 export const Banner = ({
   device
@@ -79,8 +46,6 @@ export const Banner = ({
   const [maxWidth, setWidth] = useState(100)
   const [allHobbies, setAllHobbies] = useState(null)
   
-  let counter = 0
-  const protection = 5000
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
@@ -101,11 +66,31 @@ export const Banner = ({
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
-      setAllHobbies(addPositions(counter, protection, minHeight, maxHeight, minWidth, maxWidth, hobbies))
-    }, 1000)
+        setAllHobbies(addWordPositionsToHobbies(minHeight, maxHeight, minWidth, maxWidth, hobbies))
+      }, 1000)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile, maxHeight, maxWidth])
   
+  
+  useEffect(() => {
+    function handleResize() {
+      if (!isMobile) {
+        setTimeout(() => {
+          setHeight(ref.current.clientHeight)
+        }, 1000)
+      }
+      if (!isMobile) {
+        setTimeout(() => {
+          setWidth(ref.current.clientWidth - 150)
+        }, 1000)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+  })
+  
+
   return (
     isMobile ? 
       <div className="banner-mobile">
