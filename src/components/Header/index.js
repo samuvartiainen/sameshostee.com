@@ -28,9 +28,6 @@ export const Header = ({
           </Button>
         </div>
       </div>
-      <div className="header__banner-content">
-
-      </div>
     </header>
   )
 }

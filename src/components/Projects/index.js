@@ -26,7 +26,7 @@ export const Projects = forwardRef((
     },
     {
       name: "Tetris",
-      description: "Game I made in Unity",
+      description: "Game I made with Unity",
       link: "https://sameshostee.com/tetrisgame.html",
       target: null,
       imageSrc: './tetris.jpg'

@@ -1,0 +1,15 @@
+.word {
+  background: white;
+  font-size: 1.5rem;
+  border: 2px solid #000;
+  box-shadow: 3px 4px 0px 1px #000;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 1rem;
+  z-index: 0;
+}
+
+.word:hover {
+  z-index: 1;
+}
