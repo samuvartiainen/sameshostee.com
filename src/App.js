@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Header projectsRef={projectsRef}/>
-      <Banner />
+      <Banner device={device} />
       <Projects ref={projectsRef} device={device} />
       <Footer />
     </div>
