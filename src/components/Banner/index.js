@@ -45,24 +45,25 @@ export const Banner = ({
   const [maxHeight, setHeight] = useState(100)
   const [maxWidth, setWidth] = useState(100)
   const [allHobbies, setAllHobbies] = useState(null)
+  const [hidden, setHidden] = useState(true)
   
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
         setHeight(ref.current.clientHeight)
-      }, 1000)
-    }
-  }, [isMobile])
-
-  useEffect(() => {
-    if (!isMobile) {
-      setTimeout(() => {
         setWidth(ref.current.clientWidth - 150)
       }, 1000)
     }
   }, [isMobile])
-
  
+  useEffect(() => {
+    if (!isMobile) {
+      setTimeout(() => {
+        setHidden(false)
+      }, 3000)
+    }
+  }, [isMobile])
+
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
@@ -115,6 +116,7 @@ export const Banner = ({
                 positionAbsolute={true}
                 top={hobby.top}
                 left={hobby.left}
+                hidden={hidden}
               >
                 {hobby.title}
               </Word>

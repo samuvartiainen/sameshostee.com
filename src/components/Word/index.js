@@ -4,13 +4,15 @@ export const Word = ({
   children,
   positionAbsolute,
   top,
-  left
+  left,
+  hidden
 }) => {
+  const display = hidden ? 'none' : 'flex'
   return (
     positionAbsolute ? (<p 
       style={{
         position: "absolute",
-        display: "flex",
+        display,
         top,
         left
       }}
