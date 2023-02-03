@@ -4,10 +4,12 @@ export const Button = ({
   className: cls,
   ...props
 }) => (
-  <button
-    className={`button${cls ? ` ${cls}` : ''}`}
-    {...props}
-  >
+  <div>
+    <button
+      className={`button${cls ? ` ${cls}` : ''}`}
+      {...props}
+    >
 
-  </button>
+    </button>
+  </div>
 )

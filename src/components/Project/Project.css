@@ -5,7 +5,7 @@
 
 .project__item {
   height: 300px;
-  width: 100%;
+  width: 33.333%;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -31,7 +31,7 @@
 }
 
 .project__title-container {
-  height: 50px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,17 +42,16 @@
 
 .project__title-text {
   color: white;
+  font-size: 1.5rem;
 }
 
 .project__description-container {
-  height: 50px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   justify-items: center;
   background: rgba(0, 0, 0, 0.4);
-  border-radius: 0 0 0.5rem 0.5rem;
-  
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -62,4 +61,10 @@
 .project__description-text {
   font-size: 10px;
   color: white;
+}
+
+@media only screen and (max-width: 1280px) {
+  .project__item {
+    width: 100%;
+  }
 }

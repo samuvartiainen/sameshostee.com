@@ -37,7 +37,7 @@ export const Projects = forwardRef((
       link: "https://sameshostee.com/CsvToXlsxConverter.html",
       target: null,
       imageSrc: './folder.png'
-    },{},{}
+    },
   ]
 
   const items = []
@@ -60,9 +60,9 @@ export const Projects = forwardRef((
   return (
     <div className="projects" ref={ref}>
       <div className="projects__text-container">
-        <h1 className="projects__text">
+        <h2 className="projects__text">
           My projects
-        </h1>
+        </h2>
       </div>
       <Carousel
         className="projects__carousel"
@@ -77,12 +77,12 @@ export const Projects = forwardRef((
         }}
         indicatorIconButtonProps={{
           style: {
-            color: 'grey'
+            color: 'grey',
           }
         }}
         activeIndicatorIconButtonProps={{
           style: {
-            color: '#00e0ca'
+            color: 'white',
           }
         }}
         navButtonsProps={{
@@ -91,7 +91,9 @@ export const Projects = forwardRef((
             borderRadius: "1.5rem",
             marginLeft: device === "mobile" ? "2px" : "20px",
             marginRight: device === "mobile" ? "2px" : "20px",
-            marginTop: "10px"
+            marginTop: "10px",
+            border: "2px solid #000",
+            boxShadow: "3px 4px 0px 1px #000",
           }
         }} 
         navButtonsWrapperProps={{
