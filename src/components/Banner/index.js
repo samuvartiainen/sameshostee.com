@@ -17,7 +17,7 @@ export const Banner = ({
       title: "React",
     },
     {
-      title: "cryptocurrency",
+      title: "cryptocurrencies",
     }
   ]
   const hobbiesOther = [
@@ -78,12 +78,16 @@ export const Banner = ({
     function handleResize() {
       if (!isMobile) {
         setTimeout(() => {
-          setHeight(ref.current.clientHeight)
+          if (ref.current) {
+            setHeight(ref.current.clientHeight)
+          }
         }, 1000)
       }
       if (!isMobile) {
         setTimeout(() => {
-          setWidth(ref.current.clientWidth - 150)
+          if (ref.current) {
+            setWidth(ref.current.clientWidth - 150)
+          }
         }, 1000)
       }
     }

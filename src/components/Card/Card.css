@@ -9,6 +9,8 @@
   background: grey;
   margin-top: 10px;
   flex-flow: row;
+  border: 2px solid #000;
+  box-shadow: 3px 4px 0px 1px #000;
 }
 
 .card__background-wrapper {
@@ -37,8 +39,7 @@
 }
 
 .card__content:hover {
-  text-shadow: 0em 0em 0.5rem grey;
-  box-shadow: 0 0 0.75rem #00e0ca;
+ 
 }
 
 .--empty {
