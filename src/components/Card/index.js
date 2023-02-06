@@ -14,6 +14,7 @@ export const Card = ({
           <img
             className="card__background"
             src={imageSrc}
+            alt="card-background"
           />
         </div>
       }
