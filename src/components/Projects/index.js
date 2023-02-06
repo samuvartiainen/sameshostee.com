@@ -68,7 +68,7 @@ export const Projects = forwardRef((
         className="projects__carousel"
         indicatorContainerProps={{
           style: {
-            marginTop: '10rem',
+            marginTop: '9rem',
             marginBottom: '20px',
             background: "#374BAA",
             display: "flex",
@@ -85,24 +85,28 @@ export const Projects = forwardRef((
             color: 'white',
           }
         }}
-        navButtonsProps={{
-          style: {
-            backgroundColor: 'grey',
-            borderRadius: "1.5rem",
-            marginLeft: device === "mobile" ? "2px" : "20px",
-            marginRight: device === "mobile" ? "2px" : "20px",
-            marginTop: "10px",
-            border: "2px solid #000",
-            boxShadow: "3px 4px 0px 1px #000",
-          }
-        }} 
         navButtonsWrapperProps={{
+          className:"carousel__navbuttons-wrapper",
           style: {
             height: "300px",
             overflow: "visible",
             width: "15%",
-            marginTop: "10px"
-          }
+            opacity: "1",
+          },
+        }}
+        navButtonsProps={{
+          className: "carousel__navbuttons",
+          style: {
+            background: "grey",
+            marginLeft: device === "mobile" ? "2px" : "20px",
+            marginRight: device === "mobile" ? "2px" : "20px",
+            border: "2px solid #000",
+            boxShadow: "1.5px 2px 0px 0.5px #000",
+            borderRadius: 0,
+            height: "30px",
+            width: "30px",
+            opacity: "1",
+          },
         }}
         navButtonsAlwaysVisible={true}
         autoPlay={false}
