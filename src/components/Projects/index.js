@@ -15,13 +15,13 @@ export const Projects = forwardRef((
       description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
       link: "https://sameshostee.com/junanhakusivu.html",
       target: null,
-      imageSrc: './train.jpg'
+      imageSrc: './images/train.jpg'
     },
     {
       name: "Thesis",
       description: "Sensor data project",
       link: "https://urn.fi/URN:NBN:fi:amk-2020091620484",
-      imageSrc: './academia.png',
+      imageSrc: './images/thesis.jpg',
       target: "_blank"
     },
     {
@@ -29,14 +29,14 @@ export const Projects = forwardRef((
       description: "Game I made with Unity",
       link: "https://sameshostee.com/tetrisgame.html",
       target: null,
-      imageSrc: './tetris.jpg'
+      imageSrc: './images/tetris.jpg'
     },
     {
       name: "File converter",
       description: "Csv <-> Xlsx converter",
       link: "https://sameshostee.com/CsvToXlsxConverter.html",
       target: null,
-      imageSrc: './folder.png'
+      imageSrc: './images/files.jpg'
     },
   ]
 
