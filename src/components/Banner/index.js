@@ -40,7 +40,7 @@ export const Banner = ({
   const isMobile = device === 'mobile'
   const hobbies = hobbiesTech.concat(hobbiesOther)
   const minWidth = 0
-  const minHeight = 100
+  const minHeight = 70
   const ref = useRef(null);
   const [maxHeight, setHeight] = useState(100)
   const [maxWidth, setWidth] = useState(100)
@@ -60,16 +60,16 @@ export const Banner = ({
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
-        setHidden(false)
-      }, 500)
+        setWordsLoading(false)
+      }, 2500)
     }
   }, [isMobile])
 
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
-        setWordsLoading(false)
-      }, 2500)
+        setHidden(false)
+      }, 1000)
     }
   }, [isMobile])
 
@@ -135,7 +135,7 @@ export const Banner = ({
               </Word>
             ))}
               </div>
-            <img className="banner__image" style={{visibility: hidden ? "hidden" : "visible"}} alt="sameshostee-programmer" src="./programmer.jpg"></img>
+            <img style={{visibility: hidden ? "hidden" : "visible"}} className="banner__image" alt="sameshostee-programmer" src="./programmer.jpg"></img>
         </div>
       )
   )

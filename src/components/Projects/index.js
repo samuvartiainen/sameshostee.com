@@ -94,6 +94,7 @@ export const Projects = forwardRef((
         }}
         navButtonsWrapperProps={{
           style: {
+            visibility: hidden ? "hidden" : "visible",
             height: "300px",
             overflow: "visible",
             width: "15%",
