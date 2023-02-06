@@ -1,5 +1,5 @@
 .footer {
-  height: 130px;
+  height: 120px;
   width: 100%;
   background: #00e0ca;
   display: flex;
@@ -9,7 +9,7 @@
 
 .footer__github-link {
   height: 50px;
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
