@@ -126,7 +126,7 @@ export const Banner = ({
               </Word>
             ))}
               </div>
-            <img className="banner__image" alt="sameshostee-programmer" src="./programmer.jpg"></img>
+            <img className="banner__image" style={{visibility: hidden ? "hidden" : "visible"}} alt="sameshostee-programmer" src="./programmer.jpg"></img>
         </div>
       )
   )
