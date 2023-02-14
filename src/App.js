@@ -24,7 +24,7 @@ function App() {
   let device = isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'
 
   return (
-    <div className="App">
+    <div className="app">
       <Header projectsRef={projectsRef}/>
       <Banner device={device} />
       <Projects ref={projectsRef} device={device} />

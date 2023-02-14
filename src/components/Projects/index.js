@@ -1,4 +1,4 @@
-import { forwardRef } from "react"
+import { forwardRef, useEffect, useState } from "react"
 import Carousel from "react-material-ui-carousel"
 import { Project } from "../Project"
 import "./Projects.css"
@@ -7,6 +7,13 @@ export const Projects = forwardRef((
   props,
   ref,
 ) => {
+  const [hidden, setHidden] = useState(true)
+  useEffect(() => {
+    setTimeout(() => {
+      setHidden(false)
+    }, 500)
+  })
+
   const { device } = props
   let shownItems = device === 'mobile' ? 1 : device === 'tablet' ? 2 : 3
   const projects = [
@@ -15,13 +22,13 @@ export const Projects = forwardRef((
       description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
       link: "https://sameshostee.com/junanhakusivu.html",
       target: null,
-      imageSrc: './train.jpg'
+      imageSrc: './images/train.jpg'
     },
     {
       name: "Thesis",
       description: "Sensor data project",
       link: "https://urn.fi/URN:NBN:fi:amk-2020091620484",
-      imageSrc: './academia.png',
+      imageSrc: './images/thesis.jpg',
       target: "_blank"
     },
     {
@@ -29,14 +36,14 @@ export const Projects = forwardRef((
       description: "Game I made with Unity",
       link: "https://sameshostee.com/tetrisgame.html",
       target: null,
-      imageSrc: './tetris.jpg'
+      imageSrc: './images/tetris.jpg'
     },
     {
       name: "File converter",
       description: "Csv <-> Xlsx converter",
       link: "https://sameshostee.com/CsvToXlsxConverter.html",
       target: null,
-      imageSrc: './folder.png'
+      imageSrc: './images/files.jpg'
     },
   ]
 
@@ -45,7 +52,7 @@ export const Projects = forwardRef((
   for (let i = 0; i < projects.length; i += sliderItems) {
     if (i % sliderItems === 0) {
       items.push(
-        <div key={i} className="projects__project-container">
+        <div style={{visibility: hidden ? "hidden" : "visible"}} key={i} className="projects__project-container">
           {projects.slice(i, i + sliderItems).map((da, index) => {
             return (<Project
               key={index} 
@@ -59,7 +66,7 @@ export const Projects = forwardRef((
 
   return (
     <div className="projects" ref={ref}>
-      <div className="projects__text-container">
+      <div style={{visibility: hidden ? "hidden" : "visible"}} className="projects__text-container">
         <h2 className="projects__text">
           My projects
         </h2>
@@ -68,7 +75,7 @@ export const Projects = forwardRef((
         className="projects__carousel"
         indicatorContainerProps={{
           style: {
-            marginTop: '10rem',
+            marginTop: '9rem',
             marginBottom: '20px',
             background: "#374BAA",
             display: "flex",
@@ -85,24 +92,25 @@ export const Projects = forwardRef((
             color: 'white',
           }
         }}
-        navButtonsProps={{
-          style: {
-            backgroundColor: 'grey',
-            borderRadius: "1.5rem",
-            marginLeft: device === "mobile" ? "2px" : "20px",
-            marginRight: device === "mobile" ? "2px" : "20px",
-            marginTop: "10px",
-            border: "2px solid #000",
-            boxShadow: "3px 4px 0px 1px #000",
-          }
-        }} 
         navButtonsWrapperProps={{
           style: {
+            visibility: hidden ? "hidden" : "visible",
             height: "300px",
             overflow: "visible",
             width: "15%",
-            marginTop: "10px"
-          }
+          },
+        }}
+        navButtonsProps={{
+          style: {
+            background: "grey",
+            marginLeft: device === "mobile" ? "2px" : "20px",
+            marginRight: device === "mobile" ? "2px" : "20px",
+            border: "2px solid #000",
+            boxShadow: "1.5px 2px 0px 0.5px #000",
+            height: "35px",
+            width: "35px",
+            borderRadius: "0.5rem"
+          },
         }}
         navButtonsAlwaysVisible={true}
         autoPlay={false}
