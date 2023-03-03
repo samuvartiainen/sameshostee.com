@@ -1,18 +1,12 @@
-import { forwardRef, useEffect, useState } from "react"
+import { forwardRef } from "react"
 import Carousel from "react-material-ui-carousel"
 import { Project } from "../Project"
-import "./Projects.css"
+import "./Projects.scss"
 
 export const Projects = forwardRef((
   props,
   ref,
 ) => {
-  const [hidden, setHidden] = useState(true)
-  useEffect(() => {
-    setTimeout(() => {
-      setHidden(false)
-    }, 500)
-  })
 
   const { device } = props
   let shownItems = device === 'mobile' ? 1 : device === 'tablet' ? 2 : 3
@@ -52,7 +46,7 @@ export const Projects = forwardRef((
   for (let i = 0; i < projects.length; i += sliderItems) {
     if (i % sliderItems === 0) {
       items.push(
-        <div style={{visibility: hidden ? "hidden" : "visible"}} key={i} className="projects__project-container">
+        <div key={i} className="projects__project-container">
           {projects.slice(i, i + sliderItems).map((da, index) => {
             return (<Project
               key={index} 
@@ -66,7 +60,7 @@ export const Projects = forwardRef((
 
   return (
     <div className="projects" ref={ref}>
-      <div style={{visibility: hidden ? "hidden" : "visible"}} className="projects__text-container">
+      <div className="projects__text-container">
         <h2 className="projects__text">
           My projects
         </h2>
@@ -94,7 +88,7 @@ export const Projects = forwardRef((
         }}
         navButtonsWrapperProps={{
           style: {
-            visibility: hidden ? "hidden" : "visible",
+            visibility: "visible",
             height: "300px",
             overflow: "visible",
             width: "15%",

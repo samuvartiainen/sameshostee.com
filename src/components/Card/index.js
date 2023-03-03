@@ -1,8 +1,6 @@
-import "./Card.css"
+import "./Card.scss"
 
 export const Card = ({
-  name,
-  description,
   imageSrc,
   children
 }) => {
@@ -18,9 +16,9 @@ export const Card = ({
           />
         </div>
       }
-     <div className={`card__content${modifier}`}>
-      {children}
-    </div>
+      <div className={`card__content${modifier}`}>
+        {children}
+      </div>
     </div>
   )
 }

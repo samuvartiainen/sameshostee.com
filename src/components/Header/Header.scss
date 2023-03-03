@@ -1,0 +1,40 @@
+.header {
+  background: #374BAA;
+
+  &__navbar-content {
+    padding: 20px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
+
+  &__text-container {
+    display: flex;
+    width: 50%;
+  }
+
+  &__site-name {
+    color: white;
+  }
+
+  &__social-links {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 508px) {
+  .header {
+    &__site-name {
+      align-items: center;
+      font-size: 1.5rem;
+    }
+
+    &__navbar-content {
+      padding: 10px;
+    }
+  }  
+}

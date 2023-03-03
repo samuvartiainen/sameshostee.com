@@ -1,4 +1,4 @@
-import "./Project.css"
+import "./Project.scss"
 import { Button } from "../Button"
 import { Link } from "../Link"
 import { Card } from "../Card"

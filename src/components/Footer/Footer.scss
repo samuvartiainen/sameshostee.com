@@ -1,0 +1,48 @@
+.footer {
+  height: 140px;
+  width: 100%;
+  background: #00e0ca;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__github-link {
+    height: 48px;
+    width: 48px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #000;
+    box-shadow: 3px 4px 0px 1px #000;
+    border-radius: 4px;
+    background: white;
+  }
+
+  &__github-link:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 2px white;
+  }
+
+  &__linkedin-link {
+    height: 48px;
+    width: 48px;
+    margin-top: 10px;
+    display: inline-block;
+    border: 2px solid #000;
+    box-shadow: 3px 4px 0px 1px #000;
+    border-radius: 4px;
+    background: white;
+  }
+
+  &__linkedin-link:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 0 2px white;
+  }
+
+  &__github-svg {
+    stroke: black;
+  }
+}

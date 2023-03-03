@@ -4,6 +4,7 @@ export const Link = ({
   ...props
 }) => {
   return (
+    // eslint-disable-next-line jsx-a11y/anchor-has-content
     <a href={href} {...props} />
   )
 }
