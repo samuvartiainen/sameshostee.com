@@ -1,4 +1,4 @@
-import "./Word.css"
+import "./Word.scss"
 
 export const Word = ({
   children,
