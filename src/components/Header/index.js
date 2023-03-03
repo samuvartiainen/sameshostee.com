@@ -1,5 +1,5 @@
 import { Button } from "../Button"
-import "./Header.css"
+import "./Header.scss"
 
 export const Header = ({
   projectsRef,

@@ -17,10 +17,6 @@ function App() {
     maxWidth: 1280
   });
 
-  const isDesktop = useMediaQuery({
-    minWidth: 1280
-  });
-
   let device = isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop'
 
   return (

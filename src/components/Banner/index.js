@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { addWordPositionsToHobbies } from "../../utils/addPositions"
 import { Word } from "../Word"
-import "./Banner.css"
+import "./Banner.scss"
 
 export const Banner = ({
   device
@@ -41,11 +41,10 @@ export const Banner = ({
   const hobbies = hobbiesTech.concat(hobbiesOther)
   const minWidth = 0
   const minHeight = 70
-  const ref = useRef(null);
+  const ref = useRef(null)
   const [maxHeight, setHeight] = useState(100)
   const [maxWidth, setWidth] = useState(100)
   const [allHobbies, setAllHobbies] = useState(null)
-  const [hidden, setHidden] = useState(true)
   const [wordsLoading, setWordsLoading] = useState(true)
   
   useEffect(() => {
@@ -68,20 +67,11 @@ export const Banner = ({
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
-        setHidden(false)
-      }, 1000)
-    }
-  }, [isMobile])
-
-  useEffect(() => {
-    if (!isMobile) {
-      setTimeout(() => {
         setAllHobbies(addWordPositionsToHobbies(minHeight, maxHeight, minWidth, maxWidth, hobbies))
       }, 1000)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile, maxHeight, maxWidth])
-  
   
   useEffect(() => {
     function handleResize() {
@@ -103,11 +93,10 @@ export const Banner = ({
 
     window.addEventListener('resize', handleResize)
   })
-  
 
   return (
     isMobile ? 
-      <div className="banner-mobile">
+      <div className="banner">
         <div>
           {hobbiesTech.map((hobby) => (
             <Word key={hobby.title}>{hobby.title}</Word>
@@ -135,7 +124,7 @@ export const Banner = ({
               </Word>
             ))}
               </div>
-            <img style={{visibility: hidden ? "hidden" : "visible"}} className="banner__image" alt="sameshostee-programmer" src="./programmer.jpg"></img>
+            <img className="banner__image" alt="sameshostee-programmer" src="./programmer.jpg"></img>
         </div>
       )
   )

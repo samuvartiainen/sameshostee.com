@@ -1,4 +1,4 @@
-import './Button.css'
+import './Button.scss'
 
 export const Button = ({
   className: cls,
@@ -8,8 +8,6 @@ export const Button = ({
     <button
       className={`button${cls ? ` ${cls}` : ''}`}
       {...props}
-    >
-
-    </button>
+    />
   </div>
 )
