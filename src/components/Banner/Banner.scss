@@ -6,14 +6,14 @@
   display: flex;
 
   &__words-container {
-    width: 80%;
+    width: 75%;
     flex-flow: row;
   }
 
   &__image-container {
     position: relative;
     height: 570px;
-    width: 100%;
+    width: 23;
     display: flex;
     justify-content: flex-end;
     margin-right: 10px;
@@ -24,7 +24,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 23%;
   }
 
   &__image-container.loaded {
