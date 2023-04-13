@@ -3,12 +3,12 @@ import './App.css'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Projects } from './components/Projects'
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "react-responsive"
 import { Banner } from './components/Banner'
 
 function App() {
   let projectsRef = useRef(null)
-  
+
   const isMobile = useMediaQuery({
     maxWidth: 768
   });
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header projectsRef={projectsRef}/>
+      <Header projectsRef={projectsRef} />
       <Banner device={device} />
       <Projects ref={projectsRef} device={device} />
       <Footer />
