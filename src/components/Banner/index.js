@@ -46,7 +46,7 @@ export const Banner = ({
   const [maxWidth, setWidth] = useState(100)
   const [allHobbies, setAllHobbies] = useState(null)
   const [wordsLoading, setWordsLoading] = useState(true)
-  
+
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
@@ -55,7 +55,7 @@ export const Banner = ({
       }, 1000)
     }
   }, [isMobile])
- 
+
   useEffect(() => {
     if (!isMobile) {
       setTimeout(() => {
@@ -70,9 +70,9 @@ export const Banner = ({
         setAllHobbies(addWordPositionsToHobbies(minHeight, maxHeight, minWidth, maxWidth, hobbies))
       }, 1000)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile, maxHeight, maxWidth])
-  
+
   useEffect(() => {
     function handleResize() {
       if (!isMobile) {
@@ -94,23 +94,31 @@ export const Banner = ({
     window.addEventListener('resize', handleResize)
   })
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsLoaded(true);
+  };
+
   return (
-    isMobile ? 
+    isMobile ?
       <div className="banner">
-        <div>
+        <div className="banner__words-container">
           {hobbiesTech.map((hobby) => (
             <Word key={hobby.title}>{hobby.title}</Word>
           ))}
         </div>
-        <img className="banner__image-mobile" alt="sameshostee-programmer" src="./programmer.jpg"></img>
+        <div className={`banner__image-container-mobile ${isLoaded ? 'loaded' : 'loading'}`}>
+          <img className={`banner__image-mobile ${isLoaded ? 'loaded' : 'loading'}`} alt="sameshostee-programmer" src="./programmer.jpg" onLoad={handleImageLoad}></img>
+        </div>
         {isMobile && (
-        <div>
-          {hobbiesOther.map((hobby) => (
-            <Word key={hobby.title}>{hobby.title}</Word>
-          ))}
-        </div>)}
+          <div className="banner__words-container">
+            {hobbiesOther.map((hobby) => (
+              <Word key={hobby.title}>{hobby.title}</Word>
+            ))}
+          </div>)}
       </div> : (
-         <div className="banner">
+        <div className="banner">
           <div ref={ref} className="banner__words-container">
             {allHobbies && allHobbies.map((hobby) => (
               <Word
@@ -123,8 +131,10 @@ export const Banner = ({
                 {hobby.title}
               </Word>
             ))}
-              </div>
-            <img className="banner__image" alt="sameshostee-programmer" src="./programmer.jpg"></img>
+          </div>
+          <div className={`banner__image-container ${isLoaded ? 'loaded' : 'loading'}`}>
+            <img className={`banner__image ${isLoaded ? 'loaded' : 'loading'}`} alt="sameshostee-programmer" src="./programmer.jpg" onLoad={handleImageLoad}></img>
+          </div>
         </div>
       )
   )
