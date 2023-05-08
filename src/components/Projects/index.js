@@ -49,7 +49,7 @@ export const Projects = forwardRef((
         <div key={i} className="projects__project-container">
           {projects.slice(i, i + sliderItems).map((da, index) => {
             return (<Project
-              key={index} 
+              key={index}
               item={da}
             />)
           })}

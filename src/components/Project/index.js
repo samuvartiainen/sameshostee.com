@@ -6,7 +6,7 @@ import { Card } from "../Card"
 export const Project = ({
   ...props
 }) => {
-  const {name, description, link, target, imageSrc} = props.item
+  const { name, description, link, target, imageSrc } = props.item
   return (
     <div className="project__item">
       <Card
@@ -18,7 +18,7 @@ export const Project = ({
           <div className="project__title-container">
             <h2 className="project__title-text">
               {name}
-              </h2>
+            </h2>
           </div>)
         }
         {description && (
@@ -40,7 +40,7 @@ export const Project = ({
               Open
             </Button>
           </Link>
-          )
+        )
         }
       </div>
     </div>
