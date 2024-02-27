@@ -14,7 +14,7 @@ export const Projects = forwardRef((
     {
       name: "Trains search",
       description: "Web app for searching trains in Finland. You can see the departing and arriving trains for each station. Using API by Digitraffic.",
-      link: "https://sameshostee.com/junanhakusivu.html",
+      link: "https://sameshostee.netlify.app/junanhakusivu.html",
       target: null,
       imageSrc: './images/train.jpg'
     },
@@ -28,14 +28,14 @@ export const Projects = forwardRef((
     {
       name: "Tetris",
       description: "Game I made with Unity",
-      link: "https://sameshostee.com/tetrisgame.html",
+      link: "https://sameshostee.netlify.app/tetrisgame.html",
       target: null,
       imageSrc: './images/tetris.jpg'
     },
     {
       name: "File converter",
       description: "Csv <-> Xlsx converter",
-      link: "https://sameshostee.com/CsvToXlsxConverter.html",
+      link: "https://sameshostee.netlify.app/CsvToXlsxConverter.html",
       target: null,
       imageSrc: './images/files.jpg'
     },
